@@ -18,7 +18,7 @@ class DefaultController extends AbstractController
      */
     public function request(Client $client)
     {
-        $issues = $client->projects()->all();
+        $issues = $client->projects()->all(["owned"=>true]);
         dump($issues); die;
     }
     /**

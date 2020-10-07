@@ -40,8 +40,14 @@ class MergeRequestController
      */
     public function getMergeRequest()
     {
-        $request = $this->mergeRequestService->getRequest($this->client);
-        $content = $this->twig->render('MergeRequest/mergeRequest.html.twig', ['requests' => $request]);
+        $request = $this->mergeRequestService->getMergeRequest($this->client);
+        $requests = [];
+        for($i= 0; $i<count($request); $i++){
+            array_push($requests, $request[$i]);
+        }
+            dump($requests); die;
+
+        $content = $this->twig->render('MergeRequest/mergeRequest.html.twig', ['requests' => $requests]);
         return new Response($content);
 
     }

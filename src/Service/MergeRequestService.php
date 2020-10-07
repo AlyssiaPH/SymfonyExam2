@@ -8,9 +8,13 @@ use Gitlab\Client;
 
 class MergeRequestService
 {
-    public function getRequest(Client $client)
+    public function getMergeRequest(Client $client)
     {
-        $issues = $client->projects()->all();
-        return $issues;
+        $projects = $client->projects()->all(["owned" => true]);
+        for ($i = 0; $i < count($projects); $i++){
+            $mergeRequests[] = $client->mergeRequests()->all($projects[$i]["id"]);
+        }
+       // dump($mergeRequests); die;
+        return $mergeRequests;
     }
 }

@@ -4,8 +4,11 @@
 
     <div>
         <ul>
+
             {% for request in requests %}
-                <li>{{ request.name }}</li>
+                {% if request is defined %}
+                    <li>{{ request.title }}</li>
+                {% endif %}
             {% endfor %}
         </ul>
     </div>
