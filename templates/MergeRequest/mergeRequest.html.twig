@@ -1,0 +1,12 @@
+{% extends "./base.html.twig" %}
+
+{% block body %}
+
+    <div>
+        <ul>
+            {% for request in requests %}
+                <li>{{ request.name }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
