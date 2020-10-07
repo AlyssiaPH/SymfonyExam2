@@ -8,15 +8,18 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
+    <div class="example-wrapper">
+
     {%  for team in teamsList %}
 
-        <div>
+        <div >
             <p>{{ team.name }}</p>
             <a href="{{ path('team_details', {teamName: team.name}) }}" >Voir +</a>
 
         </div>
 
     {% endfor %}
+    </div>
 
 </div>
 {% endblock %}
