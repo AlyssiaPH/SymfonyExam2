@@ -7,6 +7,7 @@
         "php": ">=7.2.5",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "nyholm/psr7": "^1.3",
         "sensio/framework-extra-bundle": "^5.1",
         "symfony/asset": "*",
         "symfony/console": "*",
@@ -15,7 +16,7 @@
         "symfony/flex": "^1.3.1",
         "symfony/form": "*",
         "symfony/framework-bundle": "*",
-        "symfony/http-client": "*",
+        "symfony/http-client": "^5.0",
         "symfony/intl": "*",
         "symfony/mailer": "*",
         "symfony/mime": "*",
@@ -30,7 +31,8 @@
         "symfony/twig-pack": "*",
         "symfony/validator": "*",
         "symfony/web-link": "*",
-        "symfony/yaml": "*"
+        "symfony/yaml": "*",
+        "zeichen32/gitlabapibundle": "^5.0"
     },
     "require-dev": {
         "symfony/debug-pack": "*",
