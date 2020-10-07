@@ -42,8 +42,7 @@ class MergeRequestController
     {
         $request = $this->mergeRequestService->getMergeRequest($this->client);
         $content = $this->twig->render('MergeRequest/mergeRequest.html.twig', ['requests' => $request]);
-        return new Response(json_encode($content));
-
+        return new Response($content);
     }
 
     /**
@@ -54,6 +53,6 @@ class MergeRequestController
         dump($projet); die;
         $content = $this->twig->render('projet/projet.html.twig', ['projet' => $projet]);
         return new Response($content);
-
     }
+
 }

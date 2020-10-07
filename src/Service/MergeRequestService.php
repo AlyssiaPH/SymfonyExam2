@@ -13,8 +13,14 @@ class MergeRequestService
         $projects = $client->projects()->all(["owned" => true]);
 
         for ($i = 0; $i < count($projects); $i++) {
-            $mergeRequests[] = $client->mergeRequests()->all($projects[$i]["id"]);
+            $projectRequests = $client->mergeRequests()->all($projects[$i]["id"]);
+
+            for ($y=0; $y <count($projectRequests); $y++)
+            {
+                $mergeRequests[] = $projectRequests[$y];
+            }
         }
+        //dump ($mergeRequests); die;
         return $mergeRequests;
     }
 
