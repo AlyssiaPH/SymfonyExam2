@@ -11,10 +11,18 @@ class MergeRequestService
     public function getMergeRequest(Client $client)
     {
         $projects = $client->projects()->all(["owned" => true]);
-        for ($i = 0; $i < count($projects); $i++){
+
+        for ($i = 0; $i < count($projects); $i++) {
             $mergeRequests[] = $client->mergeRequests()->all($projects[$i]["id"]);
         }
-       // dump($mergeRequests); die;
         return $mergeRequests;
+    }
+
+    public function getProjectId(Client $client, int $id)
+    {
+        $projects = $client->projects()->all(["owned" => true]);
+            $project = $projects([$id]["id"]);
+            dump($project); die;
+        return $project;
     }
 }

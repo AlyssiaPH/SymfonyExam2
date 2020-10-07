@@ -41,13 +41,18 @@ class MergeRequestController
     public function getMergeRequest()
     {
         $request = $this->mergeRequestService->getMergeRequest($this->client);
-        $requests = [];
-        for($i= 0; $i<count($request); $i++){
-            array_push($requests, $request[$i]);
-        }
-            dump($requests); die;
+        $content = $this->twig->render('MergeRequest/mergeRequest.html.twig', ['requests' => $request]);
+        return new Response(json_encode($content));
 
-        $content = $this->twig->render('MergeRequest/mergeRequest.html.twig', ['requests' => $requests]);
+    }
+
+    /**
+     * @Route("/projet/{id}", name="projet")
+     */
+    public function getProjectById(Client $client, $id){
+        $projet = $this->mergeRequestService->getProjectId($client, $id);
+        dump($projet); die;
+        $content = $this->twig->render('projet/projet.html.twig', ['projet' => $projet]);
         return new Response($content);
 
     }
