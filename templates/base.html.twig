@@ -7,14 +7,33 @@
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
           crossorigin="anonymous">
+    <style>
+        .footer{
+            background-color: #9dc4d5;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 1%;
+        }
+        header{
+            background-color: #9dc4d5;
+            padding: 1%;
+        }
+    </style>
     {% block stylesheets %}{% endblock %}
 </head>
 <body>
+<header class="mb-4">
+    <h1>BalanceTaMR</h1>
+</header>
 {% block body %}
     <div class="container">
 
     </div>
 {% endblock %}
+<footer class="footer text-center">
+    <span>CopyRight•2020•BalanceTaMR</span>
+</footer>
 {% block javascripts %}
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
