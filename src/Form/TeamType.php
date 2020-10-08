@@ -15,7 +15,8 @@ class TeamType extends AbstractType
         $builder
             ->add('name')
             ->add('url_picture')
-            ->add('submit', SubmitType::class)
+            ->add('project')
+            ->add('save', SubmitType::class);
         ;
     }
 

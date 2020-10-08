@@ -3,11 +3,24 @@
 {% block title %}Edit Team{% endblock %}
 
 {% block body %}
-    <h1>Edit Team</h1>
+    <div class="container">
+        <div class="mb-3">
+            <h1 class="text-center">Edit Team</h1>
+            <div class="row">
+                <div class="col-sm-6">
+                    <a class="btn btn-primary" href="{{ path('team_index') }}">Back</a>
+                </div>
+                <div class="text-right col-sm-6">
+                    {{ include('team/_delete_form.html.twig') }}
 
-    {{ include('team/_form.html.twig', {'button_label': 'Update'}) }}
+                </div>
+            </div>
 
-    <a href="{{ path('team_index') }}">back to list</a>
 
-    {{ include('team/_delete_form.html.twig') }}
+        </div>
+        <div>
+            {{ include('team/_form.html.twig', {'button_label': 'Update'}) }}
+        </div>
+
+    </div>
 {% endblock %}

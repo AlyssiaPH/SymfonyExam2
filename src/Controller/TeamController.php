@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Team;
-use App\Form\Team1Type;
+use App\Form\TeamType;
 use App\Repository\TeamRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,7 +31,7 @@ class TeamController extends AbstractController
     public function newTeam(Request $request)
     {
         $team = new Team();
-        $form = $this->createForm(Team1Type::class, $team);
+        $form = $this->createForm(TeamType::class, $team);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -63,7 +63,7 @@ class TeamController extends AbstractController
      */
     public function editTeam(Request $request, Team $team): Response
     {
-        $form = $this->createForm(Team1Type::class, $team);
+        $form = $this->createForm(TeamType::class, $team);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -80,6 +80,9 @@ class TeamController extends AbstractController
 
     /**
      * @Route("/{id}", name="team_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param Team $team
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteTeam(Request $request, Team $team)
     {
