@@ -55,4 +55,13 @@ class MergeRequestController
         return new Response($content);
     }
 
+    /**
+     * @Route("/projets", name="projets")
+     */
+    public function getProjectsList(Client $client){
+        $projets = $this->mergeRequestService->getProjects($client);
+        $content = $this->twig->render('projet/projects.html.twig', ['projects' =>$projets]);
+        return new Response($content);
+    }
+
 }

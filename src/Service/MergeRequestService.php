@@ -43,4 +43,9 @@ class MergeRequestService
             //dump($project); die;
         return $project;
     }
+
+    public function getProjects(Client $client){
+        $projects = $client->projects()->all(["owned" => true]);
+        return $projects;
+    }
 }
