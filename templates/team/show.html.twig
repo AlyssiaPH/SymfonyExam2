@@ -38,6 +38,25 @@
             </tr>
             </tbody>
         </table>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom du merge</th>
+                    <th>Description du merge</th>
+                    <th>Update du merge</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in merges %}
+                    <tr>
+                        <td>{{ item.title }}</td>
+                        <td>{{ item.description }}</td>
+                        <td>{{ item.updated_at | date('m/d/Y H:m') }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
     </div>
 
 
