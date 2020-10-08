@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\TeamRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -28,16 +30,21 @@ class Team
     private $url_picture;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\ManyToMany(targetEntity=Project::class, inversedBy="teams")
      */
-    private $project;
+    private $projects;
 
-    public function getId(): ?int
+    public function __construct()
+    {
+        $this->projects = new ArrayCollection();
+    }
+
+    public function getId()
     {
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getName()
     {
         return $this->name;
     }
@@ -49,27 +56,43 @@ class Team
         return $this;
     }
 
-    public function getUrlPicture(): ?string
+    public function getUrlPicture()
     {
         return $this->url_picture;
     }
 
-    public function setUrlPicture(?string $url_picture): self
+    public function setUrlPicture(string $url_picture): self
     {
         $this->url_picture = $url_picture;
 
         return $this;
     }
 
-    public function getProject(): ?string
+    /**
+     * @return Collection|Project[]
+     */
+    public function getProjects(): Collection
     {
-        return $this->project;
+        return $this->projects;
     }
 
-    public function setProject(?string $project): self
+    public function addProject(Project $project): self
     {
-        $this->project = $project;
+        if (!$this->projects->contains($project)) {
+            $this->projects[] = $project;
+        }
 
         return $this;
     }
+
+    public function removeProject(Project $project): self
+    {
+        if ($this->projects->contains($project)) {
+            $this->projects->removeElement($project);
+        }
+
+        return $this;
+    }
+
+
 }

@@ -10,7 +10,7 @@
             <tr>
                 <th scope="row">Name</th>
                 <th scope="row">Avatar</th>
-                <th scope="row">Project</th>
+                <th scope="row">Projects</th>
                 <th scope="row">Actions</th>
             </tr>
             </thead>
@@ -19,7 +19,10 @@
                 <tr>
                     <td>{{ team.name|upper }}</td>
                     <td><img class="img img-thumbnail" height="60" width="60" src="{{ team.urlPicture }}"></td>
-                    <td>{{ team.project }}</td>
+                    <td> {% for tea in team.projects %}
+                            {{ tea.name }}
+                            {% endfor %}
+                    </td>
                     <td width="200">
                         <a class="btn btn-primary" href="{{ path('team_show', {'id': team.id}) }}">Show</a>
                         <a class="btn btn-primary" href="{{ path('team_edit', {'id': team.id}) }}">Edit</a>
