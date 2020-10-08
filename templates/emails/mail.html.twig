@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Vos merges requests !</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>title : </th>
+                <th>description : </th>
+                <th>updated : </th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for mergeRequest in mergeRequests %}
+            <tr>
+                <td>{{  mergeRequest.title }}</td>
+                <td>{{ mergeRequest.description }}</td>
+                <td>{{ mergeRequest.updated_at | date('d/m/Y H:m') }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
