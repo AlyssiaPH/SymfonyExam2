@@ -50,7 +50,7 @@ class MergeRequestController
      */
     public function getProjectById(Client $client, $id){
         $projet = $this->mergeRequestService->getProjectId($client, $id);
-        dump($projet); die;
+        //dump($projet); die;
         $content = $this->twig->render('projet/projet.html.twig', ['projet' => $projet]);
         return new Response($content);
     }

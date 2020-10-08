@@ -39,8 +39,8 @@ class MergeRequestService
     public function getProjectId(Client $client, int $id)
     {
         $projects = $client->projects()->all(["owned" => true]);
-            $project = $projects([$id]["id"]);
-            dump($project); die;
+            $project = $projects[$id];
+            //dump($project); die;
         return $project;
     }
 }

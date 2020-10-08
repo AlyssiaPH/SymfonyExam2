@@ -5,10 +5,10 @@
 <div>
     <h1>Projet</h1>
     <ul>
+            <li>{{ projet.name }}</li>
+            <li>{{ projet.id }}</li>
 
-        {% for p in projet %}
-            <li>{{ p.name }}</li>
-        {% endfor %}
     </ul>
 </div>
-{% en
+
+{% endblock %}
