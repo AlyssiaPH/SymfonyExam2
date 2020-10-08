@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Team;
 use App\Form\TeamType;
 use App\Repository\TeamRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Gitlab\Client;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,11 +17,23 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class TeamController extends AbstractController
 {
+    private $client;
+    private $database;
+
+    public function __construct(Client $client, EntityManagerInterface $database)
+    {
+        $this->client = $client;
+        $this->database = $database;
+    }
+
+
     /**
      * @Route("/", name="team_index", methods={"GET"})
      */
     public function index(TeamRepository $teamRepository)
     {
+        $project = new \ProjectService($this->client, $this->database);
+        $project->index();
         return $this->render('team/index.html.twig', [
             'teams' => $teamRepository->findAll(),
         ]);
