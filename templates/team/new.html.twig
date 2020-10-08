@@ -3,11 +3,11 @@
 {% block title %}New Team{% endblock %}
 
 {% block body %}
-    <div class="container">
+    <div class="container mt-4">
         <div>
             <h1 class="text-center mb-4">Create new Team</h1>
         </div>
-        <a class="btn btn-primary" href="{{ path('team_index') }}">Back</a>
+        <a class="btn btn-info mb-2" href="{{ path('team_index') }}">Back</a>
 
         {{ include('team/_form.html.twig') }}
     </div>
