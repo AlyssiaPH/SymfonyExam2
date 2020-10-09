@@ -4,11 +4,15 @@
 
 {% block body %}
 
+    <h2>Toutes les MR</h2>
         <table class="table table-striped table-bordered">
             <thead class="thead-dark">
             <tr>
                 <th scope="row">Nom</th>
                 <th scope="row">Description</th>
+                <th scope="row">Pouces</th>
+                <th scope="row">Nombres de commentaires</th>
+                <th scope="row">Avatar</th>
                 <th scope="row">Date de modification</th>
             </tr>
             </thead>
@@ -17,11 +21,42 @@
                 <tr>
                     <td>{{ item.title }}</td>
                     <td>{{ item.description }}</td>
+                    <td>+{{ item.upvotes }} | -{{ item.downvotes }}</td>
+                    <td>{{ item.user_notes_count }}</td>
+                    <td><img src="{{ item.author.avatar_url }}"></td>
                     <td>{{ item.updated_at | date('m/d/Y h:m') }}</td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
+
+    <h2>MR en attente</h2>
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="row">Nom</th>
+            <th scope="row">Description</th>
+            <th scope="row">Pouces</th>
+            <th scope="row">Nombres de commentaires</th>
+            <th scope="row">Avatar</th>
+            <th scope="row">Date de modification</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in merges %}
+            {% if item.state == "pending" %}
+            <tr>
+                <td>{{ item.title }}</td>
+                <td>{{ item.description }}</td>
+                <td>+{{ item.upvotes }} | -{{ item.downvotes }}</td>
+                <td>{{ item.user_notes_count }}</td>
+                <td><img src="{{ item.author.avatar_url }}"></td>
+                <td>{{ item.updated_at | date('m/d/Y h:m') }}</td>
+            </tr>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
 
 
     </div>
