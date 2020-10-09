@@ -8,24 +8,28 @@ use Gitlab\Client;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Twig\Environment;
 
 
 class DefaultController extends AbstractController
 {
 
     /**
-     * @Route ("/api", name="api")
+     * @var Environment
      */
-    public function request(Client $client)
+    private $twig;
+
+    public function __construct(Environment $twig)
     {
-        $issues = $client->projects()->all(["owned"=>true]);
-        dump($issues); die;
+
+        $this->twig = $twig;
     }
+
     /**
-     * @Route ("/home", name="home")
+     * @Route ("/", name="home")
      */
-    public function home(){
-        $content = "<h1> COUCOU </h1>";
-        return new Response($content);
+    public function index()
+    {
+        return $this->render('home/home.html.twig');
     }
 }
