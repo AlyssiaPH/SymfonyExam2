@@ -21,6 +21,7 @@ class TeamType extends AbstractType
                 'class'=>Project::class,
                 'choice_label'=> 'name',
                 'multiple'=>true,
+                'required'=>false,
             ] )
             ->add('save', SubmitType::class);
         ;

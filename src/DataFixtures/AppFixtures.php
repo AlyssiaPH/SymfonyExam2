@@ -12,7 +12,7 @@ class AppFixtures extends Fixture
     {
 
         // create 20 products! Bam!
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 0; $i < 3; $i++) {
             $newTeam = new Team();
             $newTeam->setName('Team '.$i);
             $randomInt=random_int(10, 99);
