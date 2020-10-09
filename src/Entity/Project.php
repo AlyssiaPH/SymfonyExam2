@@ -20,9 +20,9 @@ class Project
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="integer")
      */
-    private $name;
+    private $id_git;
 
     /**
      * @ORM\ManyToMany(targetEntity=Team::class, mappedBy="projects")
@@ -39,14 +39,14 @@ class Project
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getIdGit(): ?int
     {
-        return $this->name;
+        return $this->id_git;
     }
 
-    public function setName(string $name): self
+    public function setIdGit(int $id_git): self
     {
-        $this->name = $name;
+        $this->id_git = $id_git;
 
         return $this;
     }

@@ -23,7 +23,7 @@ class ProjectService
         for ($i = 0; $i < count($projectAll); $i++)
         {
             $project = new Project();
-            $project->setName($projectAll[$i]['name']);
+            $project->setIdGit($projectAll[$i]['id']);
             $this->database->persist($project);
             $this->database->flush();
         }

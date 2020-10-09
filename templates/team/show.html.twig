@@ -23,7 +23,7 @@
                 <td>{{ team.name|upper }}</td>
                 <td><img class="img img-thumbnail" height="60" width="60" src="{{ team.urlPicture }}"></td>
                 <td> {% for tea in team.projects %}
-                        {{ tea.name }}
+                        {{ tea.idGit }}
                     {% endfor %}
                 </td>
                 <td>
@@ -38,24 +38,11 @@
             </tr>
             </tbody>
         </table>
-        <table>
-            <thead>
-                <tr>
-                    <th>Nom du merge</th>
-                    <th>Description du merge</th>
-                    <th>Update du merge</th>
-                </tr>
-            </thead>
-            <tbody>
+
                 {% for item in merges %}
-                    <tr>
-                        <td>{{ item.title }}</td>
-                        <td>{{ item.description }}</td>
-                        <td>{{ item.updated_at | date('m/d/Y H:m') }}</td>
-                    </tr>
+                    <a href="/team/merges/{{ team.id }}/{{ item.idGit }}" >{{ item.idGit }}</a>
                 {% endfor %}
-            </tbody>
-        </table>
+
 
     </div>
 

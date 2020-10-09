@@ -36,6 +36,17 @@ class MergeRequestService
         return $projectRequests;
     }
 
+    /**
+     * @param Client $client
+     * @param $idProject The id of the project
+     * @return mixed All the requests from the client in a project
+     */
+    public function getMergeRequestFromprojectId(Client $client, $idProject)
+    {
+       $mergeRequest = $client->mergeRequests()->all($idProject);
+       return $mergeRequest;
+    }
+
     public function getProjectId(Client $client, int $id)
     {
         $projects = $client->projects()->all(["owned" => true]);

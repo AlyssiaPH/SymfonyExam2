@@ -23,7 +23,7 @@ class TeamProjectType extends AbstractType
             ])
             ->add('name', EntityType::class, [
                 'class'=>Project::class,
-                'choice_label' => 'name',
+                'choice_label' => 'id_git',
                 'multiple' => true,
             ])
             ->add('submit', SubmitType::class)

@@ -19,7 +19,7 @@ class TeamType extends AbstractType
             ->add('url_picture')
             ->add('projects',EntityType::class, [
                 'class'=>Project::class,
-                'choice_label'=> 'name',
+                'choice_label'=> 'id_git',
                 'multiple'=>true,
             ] )
             ->add('save', SubmitType::class);

@@ -4,10 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Team;
 use App\Form\TeamType;
+use App\Repository\ProjectRepository;
 use App\Repository\TeamRepository;
 use App\Service\MergeRequestService;
 use Doctrine\ORM\EntityManagerInterface;
 use Gitlab\Client;
+use phpDocumentor\Reflection\Types\Void_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -68,11 +70,23 @@ class TeamController extends AbstractController
      */
     public function showTeam(Team $team)
     {
-        $merge = new MergeRequestService();
-        $merge = $merge->getMergeRequestFromproject($this->client, $team->getId());
+
         return $this->render('team/show.html.twig', [
             'team' => $team,
-            'merges' => $merge,
+            'merges' => $team->getProjects(),
+        ]);
+    }
+
+    /**
+     * @Route("/merges/{id_team}/{id_project}", name="team_showMerges", methods={"GET"})
+     */
+    public function showTeamMerge(int $id_team, int $id_project)
+    {
+        $merge = New MergeRequestService();
+        $mergeRequests = $merge->getMergeRequestFromprojectId($this->client, $id_project);
+
+        return $this->render('team/showMerges.html.twig', [
+            'merges' => $mergeRequests,
         ]);
     }
 
