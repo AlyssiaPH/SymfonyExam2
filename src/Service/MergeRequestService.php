@@ -32,7 +32,7 @@ class MergeRequestService
     public function getMergeRequestFromproject(Client $client, $idProject)
     {
         $projects = $client->projects()->all(["owned" => true]);
-            $projectRequests = $client->mergeRequests()->all($projects[$idProject]["id"]);
+            $projectRequests = $client->mergeRequests()->all($projects["gitLabId"]["id"]);
         return $projectRequests;
     }
 

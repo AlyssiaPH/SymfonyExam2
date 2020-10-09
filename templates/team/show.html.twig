@@ -21,8 +21,8 @@
             <tr>
                 <td>{{ team.name|upper }}</td>
                 <td><img class="img img-thumbnail" height="60" width="60" src="{{ team.urlPicture }}"></td>
-                <td> {% for tea in team.projects %}
-                        {{ tea.idGit }}
+                <td> {% for p in team %}
+                        {{ p.project.name }}
                     {% endfor %}
                 </td>
                 <td>
@@ -39,7 +39,7 @@
         </table>
 
                 {% for item in merges %}
-                    <a href="/team/merges/{{ team.id }}/{{ item.idGit }}" >{{ item.idGit }}</a>
+                    <a href="/team/merges/{{ team.id }}/{{ item.idGit }}" >{{ item.name }}</a>
                 {% endfor %}
 
 

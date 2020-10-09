@@ -76,7 +76,6 @@ class TeamController extends AbstractController
      */
     public function showTeam(Team $team)
     {
-
         return $this->render('team/show.html.twig', [
             'team' => $team,
             'merges' => $team->getProjects(),

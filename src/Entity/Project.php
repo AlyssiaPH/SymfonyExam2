@@ -25,6 +25,11 @@ class Project
     private $id_git;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $name;
+
+    /**
      * @ORM\ManyToMany(targetEntity=Team::class, mappedBy="projects")
      */
     private $teams;
@@ -47,6 +52,18 @@ class Project
     public function setIdGit(int $id_git): self
     {
         $this->id_git = $id_git;
+
+        return $this;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function setName( $name): self
+    {
+        $this->name = $name;
 
         return $this;
     }

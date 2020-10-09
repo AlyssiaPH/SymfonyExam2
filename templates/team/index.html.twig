@@ -20,7 +20,7 @@
                     <td>{{ team.name|upper }}</td>
                     <td><img class="img img-thumbnail" height="60" width="60" src="{{ team.urlPicture }}"></td>
                     <td> {% for tea in team.projects %}
-                            {{ tea.idGit }}
+                            {{ tea.name }}
                             {% endfor %}
                     </td>
                     <td width="200">

@@ -36,6 +36,7 @@ class ProjectService
         for ($i = 0; $i < count($projectAll); $i++) {
             $project = new Project();
             $project->setIdGit($projectAll[$i]['id']);
+            $project->setName($projectAll[$i]['name']);
 
             if (!$projectRepository->findOneBy(['id_git'=>$project->getIdGit()])) {
 
