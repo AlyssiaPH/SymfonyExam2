@@ -20,7 +20,7 @@ class Project
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", unique=true)
      */
     private $id_git;
 

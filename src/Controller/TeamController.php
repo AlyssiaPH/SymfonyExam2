@@ -8,6 +8,7 @@ use App\Repository\ProjectRepository;
 use App\Repository\TeamRepository;
 use App\Service\MergeRequestService;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ManagerRegistry;
 use Gitlab\Client;
 use phpDocumentor\Reflection\Types\Void_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,11 +23,16 @@ class TeamController extends AbstractController
 {
     private $client;
     private $database;
+    /**
+     * @var ManagerRegistry
+     */
+    private $registry;
 
-    public function __construct(Client $client, EntityManagerInterface $database)
+    public function __construct(Client $client, EntityManagerInterface $database, ManagerRegistry $registry)
     {
         $this->client = $client;
         $this->database = $database;
+        $this->registry = $registry;
     }
 
 
@@ -35,7 +41,7 @@ class TeamController extends AbstractController
      */
     public function index(TeamRepository $teamRepository)
     {
-        $project = new \ProjectService($this->client, $this->database);
+        $project = new \ProjectService($this->client, $this->database, $this->registry);
         $project->index();
         return $this->render('team/index.html.twig', [
             'teams' => $teamRepository->findAll(),
